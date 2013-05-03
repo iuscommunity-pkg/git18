@@ -47,7 +47,7 @@
 
 Name:           %{name}
 Version:        1.8.2.1
-Release:        2.ius%{?dist}
+Release:        3.ius%{?dist}
 Summary:        Fast Version Control System
 License:        GPLv2
 Group:          Development/Tools
@@ -122,15 +122,15 @@ Group:          Development/Tools
 %if %{noarch_sub}
 BuildArch:      noarch
 %endif
-Requires:       git18 = %{version}-%{release}
-Requires:       git-cvs18 = %{version}-%{release}
-Requires:       git-email18 = %{version}-%{release}
-Requires:       git-gui18 = %{version}-%{release}
-Requires:       git-svn18 = %{version}-%{release}
-Requires:       git-p418 = %{version}-%{release}
-Requires:       gitk18 = %{version}-%{release}
-Requires:       perl-Git18 = %{version}-%{release}
-Requires:       emacs-git18 = %{version}-%{release}
+Requires:       git = %{version}-%{release}
+Requires:       git-cvs = %{version}-%{release}
+Requires:       git-email = %{version}-%{release}
+Requires:       git-gui = %{version}-%{release}
+Requires:       git-svn = %{version}-%{release}
+Requires:       git-p4 = %{version}-%{release}
+Requires:       gitk = %{version}-%{release}
+Requires:       perl-Git = %{version}-%{release}
+Requires:       emacs-git = %{version}-%{release}
 Conflicts:      %{real_name} < %{base_ver}
 Provides:       git-all = %{version}-%{release}                                    
 
@@ -603,7 +603,10 @@ rm -rf %{buildroot}
 # No files for you!
 
 %changelog
-* Wed May 01 2013 Ben Harper <ben.harper@rackspace.com> - 18.2.1-2.ius
+* Fri May 03 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.2.1-3.ius
+- update Requires for git18-all
+
+* Wed May 01 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.2.1-2.ius
 - Porting from Fedora to IUS git18
 
 * Sun Apr 14 2013 Todd Zullinger <tmz@pobox.com> - 1.8.2.1-1
