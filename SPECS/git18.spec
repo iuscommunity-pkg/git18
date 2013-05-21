@@ -46,8 +46,8 @@
 %global name git18
 
 Name:           %{name}
-Version:        1.8.2.1
-Release:        3.ius%{?dist}
+Version:        1.8.2.3
+Release:        1.ius%{?dist}
 Summary:        Fast Version Control System
 License:        GPLv2
 Group:          Development/Tools
@@ -603,6 +603,9 @@ rm -rf %{buildroot}
 # No files for you!
 
 %changelog
+* Tue May 21 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.2.3-1.ius
+- Update to 1.8.2.3
+
 * Fri May 03 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.2.1-3.ius
 - update Requires for git18-all
 
