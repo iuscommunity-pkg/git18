@@ -508,10 +508,11 @@ rm -rf %{buildroot}
 %files -f bin-man-doc-files
 %defattr(-,root,root)
 %{_datadir}/git-core/
-%doc README COPYING Documentation/*.txt Documentation/RelNotes contrib/
+%doc README COPYING Documentation/*.txt Documentation/RelNotes contrib/ contrib/subtree/git-subtree
 %{!?_without_docs: %doc Documentation/*.html Documentation/docbook-xsl.css}
 %{!?_without_docs: %doc Documentation/howto Documentation/technical}
 %{_sysconfdir}/bash_completion.d
+/git-subtree
 
 %files p4
 %defattr(-,root,root)
@@ -605,6 +606,8 @@ rm -rf %{buildroot}
 %changelog
 * Tue Aug 27 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.4-1.ius
 - Latest sources from upstream
+- updated Patch0 and Patch5
+- updated %files
 
 * Thu Jul 25 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.3.4-1.ius
 - Latest sources from upstream

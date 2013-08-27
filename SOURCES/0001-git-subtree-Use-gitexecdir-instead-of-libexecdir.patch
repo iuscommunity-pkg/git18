@@ -1,42 +1,11 @@
-From 86c3e2b5188579bff1ff981910462ad5e563044b Mon Sep 17 00:00:00 2001
-From: Todd Zullinger <tmz@pobox.com>
-Date: Fri, 4 Jan 2013 11:54:21 -0500
-Subject: [PATCH] git-subtree: Use gitexecdir instead of libexecdir
-
-When the git subtree Makefile includes config.mak from the toplevel,
-it's useful to have the same variables set globally applied.  Using
-gitexecdir instead of libexecdir respects the global settings more
-consistently.
-
-Remove the unused gitdir variable as well.
----
- contrib/subtree/Makefile |    5 ++---
- 1 files changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/contrib/subtree/Makefile b/contrib/subtree/Makefile
-index 36ae3e4..f87b945 100644
---- a/contrib/subtree/Makefile
-+++ b/contrib/subtree/Makefile
-@@ -2,9 +2,8 @@
- -include ../../config.mak
- 
- prefix ?= /usr/local
-+gitexecdir ?= $(prefix)/libexec/git-core
- mandir ?= $(prefix)/share/man
--libexecdir ?= $(prefix)/libexec/git-core
--gitdir ?= $(shell git --exec-path)
- man1dir ?= $(mandir)/man1
- 
- gitver ?= $(word 3,$(shell git --version))
-@@ -30,7 +29,7 @@ $(GIT_SUBTREE): $(GIT_SUBTREE_SH)
- doc: $(GIT_SUBTREE_DOC)
+--- git-1.8.4/contrib/subtree/Makefile	2013-08-27 08:48:23.016347821 -0500
++++ git-1.8.4/contrib/subtree/Makefile.edit	2013-08-27 08:52:27.335354451 -0500
+@@ -30,7 +30,7 @@
  
  install: $(GIT_SUBTREE)
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(libexecdir)
 -	$(INSTALL) -m 755 $(GIT_SUBTREE) $(DESTDIR)$(libexecdir)
 +	$(INSTALL) -m 755 $(GIT_SUBTREE) $(DESTDIR)$(gitexecdir)
  
  install-doc: install-man
  
--- 
-1.7.6
-
