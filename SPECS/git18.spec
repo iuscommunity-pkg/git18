@@ -46,7 +46,7 @@
 %global name git18
 
 Name:           %{name}
-Version:        1.8.4.3
+Version:        1.8.4.4
 Release:        1.ius%{?dist}
 Summary:        Fast Version Control System
 License:        GPLv2
@@ -604,6 +604,9 @@ rm -rf %{buildroot}
 # No files for you!
 
 %changelog
+* Thu Nov 21 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.4.4-1.ius
+- Latest sources from upstream
+
 * Mon Nov 11 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.4.3-1.ius
 - Latest sources from upstream
 
