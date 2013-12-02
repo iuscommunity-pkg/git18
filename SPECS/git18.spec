@@ -309,7 +309,7 @@ Conflicts:      emacs-git-el < %{base_ver}
 %patch3 -p1
 %endif
 %patch5 -p1
-%patch6 -p1
+#%patch6 -p1
 
 %if %{use_prebuilt_docs}
 mkdir -p prebuilt_docs/{html,man}
@@ -606,6 +606,7 @@ rm -rf %{buildroot}
 %changelog
 * Mon Dec 02 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.5-1.ius
 - Latest sources from upstream
+- patch6 disabled
 
 * Thu Nov 21 2013 Ben Harper <ben.harper@rackspace.com> - 1.8.4.4-1.ius
 - Latest sources from upstream
