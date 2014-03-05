@@ -47,7 +47,7 @@
 
 Name:           %{name}
 Version:        1.8.5.5
-Release:        1.ius%{?dist}
+Release:        2.ius%{?dist}
 Summary:        Fast Version Control System
 License:        GPLv2
 Group:          Development/Tools
@@ -604,6 +604,12 @@ rm -rf %{buildroot}
 # No files for you!
 
 %changelog
+* Wed Mar 05 2014 Ben Harper <ben.harper@rackspace.com> - 1.8.5.5-2.ius
+- rebuilt with updated gnutls as it is installed as a part of the build process
+  Red Hat issued the following Security Advisories:
+  https://rhn.redhat.com/errata/RHSA-2014-0247.html
+  https://rhn.redhat.com/errata/RHSA-2014-0246.html
+
 * Tue Feb 18 2014 Ben Harper <ben.harper@rackspace.com> - 1.8.5.5-1.ius
 - Latest sources from upstream
 
