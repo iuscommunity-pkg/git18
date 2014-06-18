@@ -47,7 +47,7 @@
 
 Name:           %{name}
 Version:        1.8.5.5
-Release:        3.ius%{?dist}
+Release:        4.ius%{?dist}
 Summary:        Fast Version Control System
 License:        GPLv2
 Group:          Development/Tools
@@ -508,11 +508,10 @@ rm -rf %{buildroot}
 %files -f bin-man-doc-files
 %defattr(-,root,root)
 %{_datadir}/git-core/
-%doc README COPYING Documentation/*.txt Documentation/RelNotes contrib/ contrib/subtree/git-subtree
+%doc README COPYING Documentation/*.txt Documentation/RelNotes contrib/
 %{!?_without_docs: %doc Documentation/*.html Documentation/docbook-xsl.css}
 %{!?_without_docs: %doc Documentation/howto Documentation/technical}
 %{_sysconfdir}/bash_completion.d
-/git-subtree
 
 %files p4
 %defattr(-,root,root)
@@ -604,6 +603,9 @@ rm -rf %{buildroot}
 # No files for you!
 
 %changelog
+* Wed Jun 18 2014 Carl George <carl.george@rackspace.com> - 1.8.5.5-4.ius
+- Allow git-subtree location to be determined from bin-man-doc-files
+
 * Tue Jun 03 2014 Ben Harper <ben.harper@rackspace.com> - 1.8.5.5-3.ius
 - rebuilt with updated gnutls as it is installed as a part of the build process
   Red Hat issued the following Security Advisory:
