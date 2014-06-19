@@ -141,7 +141,8 @@ This is a dummy package which brings in all subpackages.
 %package daemon
 Summary:        Git protocol dæmon
 Group:          Development/Tools
-Requires:       git = %{version}-%{release}, xinetd
+Requires:       git = %{version}-%{release}
+Requires:       xinetd
 Provides:       git-daemon = %{version}-%{release}                                    
 Provides:       git-daemon%{?_isa} = %{version}-%{release}
 Provides:       config(git-daemon) = %{version}-%{release}
@@ -194,7 +195,7 @@ BuildArch:      noarch
 %endif
 Requires:       git = %{version}-%{release}, cvs
 Requires:       cvsps
-Requires:	perl-DBD-SQLite
+Requires:       perl-DBD-SQLite
 Provides:       git-cvs = %{version}-%{release}                                    
 Conflicts:      git-cvs < %{base_ver}
 %description cvs
