@@ -592,6 +592,13 @@ rm -rf %{buildroot}
 %changelog
 * Wed Jun 18 2014 Carl George <carl.george@rackspace.com> - 1.8.5.5-4.ius
 - Allow git-subtree location to be determined from bin-man-doc-files
+- Removed unused patch 0001-Drop-DESTDIR-from-python-instlibdir.patch
+- Remove gnome-keyring stuff
+- Update release logic
+- Correct patch to properly set gitexecdir LP#1331465
+- Implement ius_suffix
+- Implement exclude regex
+- Change all instance of base_ver to version
 
 * Tue Jun 03 2014 Ben Harper <ben.harper@rackspace.com> - 1.8.5.5-3.ius
 - rebuilt with updated gnutls as it is installed as a part of the build process
