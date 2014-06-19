@@ -94,7 +94,7 @@ Provides:       git-core = %{version}-%{release}
 Provides:       git-core%{?ius_suffix} = %{version}-%{release}
 Provides:       git = %{version}-%{release}
 Provides:       git-%{?_isa} = %{version}-%{release}
-Conflicts:      %{real_name} < %{base_ver}
+Conflicts:      %{real_name} < %{version}
 
 #Obsoletes:      git-core <= 1.5.4.3
 
@@ -125,7 +125,7 @@ Requires:       git-p4 = %{version}-%{release}
 Requires:       gitk = %{version}-%{release}
 Requires:       perl-Git = %{version}-%{release}
 Requires:       emacs-git = %{version}-%{release}
-Conflicts:      %{real_name} < %{base_ver}
+Conflicts:      %{real_name} < %{version}
 Provides:       git-all = %{version}-%{release}                                    
 
 %description all
@@ -143,7 +143,7 @@ Requires:       xinetd
 Provides:       git-daemon = %{version}-%{release}                                    
 Provides:       git-daemon%{?_isa} = %{version}-%{release}
 Provides:       config(git-daemon) = %{version}-%{release}
-Conflicts:      git-daemon < %{base_ver}
+Conflicts:      git-daemon < %{version}
 %description daemon
 The git dæmon for supporting git:// access to git repositories
 
@@ -156,7 +156,7 @@ BuildArch:      noarch
 Requires:       git = %{version}-%{release}
 Provides:       gitweb = %{version}-%{release}                                    
 Provides:       config(gitweb) = %{version}-%{release}                                    
-Conflicts:      gitweb < %{base_ver}
+Conflicts:      gitweb < %{version}
 
 %description -n gitweb%{?ius_suffix}
 Simple web interface to track changes in git repositories
@@ -170,7 +170,7 @@ BuildArch:      noarch
 BuildRequires:  python
 Requires:       git = %{version}-%{release}
 Provides:       git-p4 = %{version}-%{release}                                    
-Conflicts:      git-p4 < %{base_ver}
+Conflicts:      git-p4 < %{version}
 %description p4
 %{summary}.
 
@@ -182,7 +182,7 @@ Requires:       subversion
 Requires:       perl(Term::ReadKey)
 Provides:       git-svn = %{version}-%{release}                                    
 Provides:       git-svn%{?_isa} = %{version}-%{release}
-Conflicts:      git-svn < %{base_ver}
+Conflicts:      git-svn < %{version}
 %description svn
 Git tools for importing Subversion repositories.
 
@@ -197,7 +197,7 @@ Requires:       cvs
 Requires:       cvsps
 Requires:       perl-DBD-SQLite
 Provides:       git-cvs = %{version}-%{release}                                    
-Conflicts:      git-cvs < %{base_ver}
+Conflicts:      git-cvs < %{version}
 %description cvs
 Git tools for importing CVS repositories.
 
@@ -212,7 +212,7 @@ Requires:       perl-Git%{?ius_suffix} = %{version}-%{release}
 Requires:       perl(Authen::SASL)
 Requires:       perl(Net::SMTP::SSL)
 Provides:       git-email = %{version}-%{release}
-Conflicts:      git-email < %{base_ver}
+Conflicts:      git-email < %{version}
 %description email
 Git tools for sending email.
 
@@ -226,7 +226,7 @@ Requires:       git = %{version}-%{release}
 Requires:       tk >= 8.4
 Requires:       gitk = %{version}-%{release}
 Provides:       git-gui = %{version}-%{release}                                    
-Conflicts:      git-gui < %{base_ver}
+Conflicts:      git-gui < %{version}
 %description gui
 Git GUI tool.
 
@@ -239,7 +239,7 @@ BuildArch:      noarch
 Requires:       git = %{version}-%{release}
 Requires:       tk >= 8.4
 Provides:       gitk = %{version}-%{release}                                    
-Conflicts:      gitk < %{base_ver}
+Conflicts:      gitk < %{version}
 %description -n gitk%{?ius_suffix}
 Git revision tree visualiser.
 
@@ -255,7 +255,7 @@ BuildRequires:  perl(ExtUtils::MakeMaker)
 Requires:       perl(Error)
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Provides:       perl-Git = %{version}-%{release}
-Conflicts:      perl-Git < %{base_ver}
+Conflicts:      perl-Git < %{version}
 
 %description -n perl-Git%{?ius_suffix}
 Perl interface to Git.
@@ -269,7 +269,7 @@ BuildArch:      noarch
 Requires:       git = %{version}-%{release}
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Provides:       perl-Git-SVN = %{version}-%{release}                                        
-Conflicts:      perl-Git-SVN < %{base_ver}
+Conflicts:      perl-Git-SVN < %{version}
 
 %description -n perl-Git-SVN%{?ius_suffix}
 Perl interface to Git.
@@ -279,7 +279,7 @@ Summary:        Git version control system support for Emacs
 Group:          Applications/Editors
 Requires:       git = %{version}-%{release}
 Provides:       emacs-git = %{version}-%{release}                                        
-Conflicts:      emacs-git < %{base_ver}
+Conflicts:      emacs-git < %{version}
 %if %{noarch_sub}
 BuildArch:      noarch
 Requires:       emacs(bin) >= %{_emacs_version}
@@ -298,7 +298,7 @@ BuildArch:      noarch
 %endif
 Requires:       emacs-git = %{version}-%{release}
 Provides:       emacs-git-el = %{version}-%{release}                                        
-Conflicts:      emacs-git-el < %{base_ver}
+Conflicts:      emacs-git-el < %{version}
 
 %description -n emacs-git-el%{?ius_suffix}
 %{summary}.
