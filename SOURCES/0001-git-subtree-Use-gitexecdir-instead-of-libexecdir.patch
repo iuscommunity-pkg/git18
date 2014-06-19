@@ -1,10 +1,24 @@
---- git-1.8.4/contrib/subtree/Makefile	2013-08-27 08:48:23.016347821 -0500
-+++ git-1.8.4/contrib/subtree/Makefile.edit	2013-08-27 08:52:27.335354451 -0500
-@@ -30,7 +30,7 @@
+diff -Naur a/contrib/subtree/Makefile b/contrib/subtree/Makefile
+--- a/contrib/subtree/Makefile	2014-02-13 16:09:12.000000000 -0600
++++ b/contrib/subtree/Makefile	2014-06-19 15:32:29.662000000 -0500
+@@ -2,9 +2,8 @@
+ -include ../../config.mak
+ 
+ prefix ?= /usr/local
++gitexecdir ?= $(prefix)/libexec/git-core
+ mandir ?= $(prefix)/share/man
+-libexecdir ?= $(prefix)/libexec/git-core
+-gitdir ?= $(shell git --exec-path)
+ man1dir ?= $(mandir)/man1
+ 
+ gitver ?= $(word 3,$(shell git --version))
+@@ -31,8 +30,8 @@
+ doc: $(GIT_SUBTREE_DOC) $(GIT_SUBTREE_HTML)
  
  install: $(GIT_SUBTREE)
- 	$(INSTALL) -d -m 755 $(DESTDIR)$(libexecdir)
+-	$(INSTALL) -d -m 755 $(DESTDIR)$(libexecdir)
 -	$(INSTALL) -m 755 $(GIT_SUBTREE) $(DESTDIR)$(libexecdir)
++	$(INSTALL) -d -m 755 $(DESTDIR)$(gitexecdir)
 +	$(INSTALL) -m 755 $(GIT_SUBTREE) $(DESTDIR)$(gitexecdir)
  
  install-doc: install-man
