@@ -43,9 +43,9 @@
 %endif
 
 %global real_name git
-%global name git18
+%global ius_suffix 18
 
-Name:           %{name}
+Name:           %{real_name}%{?ius_suffix}
 Version:        1.8.5.5
 Release:        4.ius%{?dist}
 Summary:        Fast Version Control System
@@ -86,15 +86,15 @@ Requires:       less
 Requires:       openssh-clients
 Requires:       perl(Error)
 Requires:       perl(Term::ReadKey)
-Requires:       perl-Git18 = %{version}-%{release}
+Requires:       perl-Git%{?ius_suffix} = %{version}-%{release}
 Requires:       rsync
 Requires:       zlib >= 1.2
 
 Provides:       git-core = %{version}-%{release}
-Provides:       git-core18 = %{version}-%{release}
+Provides:       git-core%{?ius_suffix} = %{version}-%{release}
 Provides:       git = %{version}-%{release}
 Provides:       git-%{?_isa} = %{version}-%{release}
-Conflicts: %{real_name} < %{base_ver}
+Conflicts:      %{real_name} < %{base_ver}
 
 #Obsoletes:      git-core <= 1.5.4.3
 
@@ -147,7 +147,7 @@ Conflicts:      git-daemon < %{base_ver}
 %description daemon
 The git dæmon for supporting git:// access to git repositories
 
-%package -n gitweb18
+%package -n gitweb%{?ius_suffix}
 Summary:        Simple web interface to git repositories
 Group:          Development/Tools
 %if %{noarch_sub}
@@ -158,7 +158,7 @@ Provides:       gitweb = %{version}-%{release}
 Provides:       config(gitweb) = %{version}-%{release}                                    
 Conflicts:      gitweb < %{base_ver}
 
-%description -n gitweb18
+%description -n gitweb%{?ius_suffix}
 Simple web interface to track changes in git repositories
 
 %package p4
@@ -177,7 +177,9 @@ Conflicts:      git-p4 < %{base_ver}
 %package svn
 Summary:        Git tools for importing Subversion repositories
 Group:          Development/Tools
-Requires:       git = %{version}-%{release}, subversion, perl(Term::ReadKey)
+Requires:       git = %{version}-%{release}
+Requires:       subversion
+Requires:       perl(Term::ReadKey)
 Provides:       git-svn = %{version}-%{release}                                    
 Provides:       git-svn%{?_isa} = %{version}-%{release}
 Conflicts:      git-svn < %{base_ver}
@@ -190,7 +192,8 @@ Group:          Development/Tools
 %if %{noarch_sub}
 BuildArch:      noarch
 %endif
-Requires:       git = %{version}-%{release}, cvs
+Requires:       git = %{version}-%{release}
+Requires:       cvs
 Requires:       cvsps
 Requires:       perl-DBD-SQLite
 Provides:       git-cvs = %{version}-%{release}                                    
@@ -204,10 +207,11 @@ Group:          Development/Tools
 %if %{noarch_sub}
 BuildArch:      noarch
 %endif
-Requires:       git = %{version}-%{release}, perl-Git18 = %{version}-%{release}
+Requires:       git = %{version}-%{release}
+Requires:       perl-Git%{?ius_suffix} = %{version}-%{release}
 Requires:       perl(Authen::SASL)
 Requires:       perl(Net::SMTP::SSL)
-Provides:       git-email = %{version}-%{release}                                    
+Provides:       git-email = %{version}-%{release}
 Conflicts:      git-email < %{base_ver}
 %description email
 Git tools for sending email.
@@ -218,42 +222,45 @@ Group:          Development/Tools
 %if %{noarch_sub}
 BuildArch:      noarch
 %endif
-Requires:       git = %{version}-%{release}, tk >= 8.4
+Requires:       git = %{version}-%{release}
+Requires:       tk >= 8.4
 Requires:       gitk = %{version}-%{release}
 Provides:       git-gui = %{version}-%{release}                                    
 Conflicts:      git-gui < %{base_ver}
 %description gui
 Git GUI tool.
 
-%package -n gitk18
+%package -n gitk%{?ius_suffix}
 Summary:        Git revision tree visualiser
 Group:          Development/Tools
 %if %{noarch_sub}
 BuildArch:      noarch
 %endif
-Requires:       git = %{version}-%{release}, tk >= 8.4
+Requires:       git = %{version}-%{release}
+Requires:       tk >= 8.4
 Provides:       gitk = %{version}-%{release}                                    
 Conflicts:      gitk < %{base_ver}
-%description -n gitk18
+%description -n gitk%{?ius_suffix}
 Git revision tree visualiser.
 
-%package -n perl-Git18
+%package -n perl-Git%{?ius_suffix}
 Summary:        Perl interface to Git
 Group:          Development/Libraries
 %if %{noarch_sub}
 BuildArch:      noarch
 %endif
 Requires:       git = %{version}-%{release}
-BuildRequires:  perl(Error), perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(Error)
+BuildRequires:  perl(ExtUtils::MakeMaker)
 Requires:       perl(Error)
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
-Provides: perl-Git = %{version}-%{release}                                        
-Conflicts: perl-Git < %{base_ver} 
+Provides:       perl-Git = %{version}-%{release}
+Conflicts:      perl-Git < %{base_ver}
 
-%description -n perl-Git18
+%description -n perl-Git%{?ius_suffix}
 Perl interface to Git.
 
-%package -n perl-Git-SVN18
+%package -n perl-Git-SVN%{?ius_suffix}
 Summary:        Perl interface to Git::SVN
 Group:          Development/Libraries
 %if %{noarch_sub}
@@ -264,10 +271,10 @@ Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $versi
 Provides:       perl-Git-SVN = %{version}-%{release}                                        
 Conflicts:      perl-Git-SVN < %{base_ver}
 
-%description -n perl-Git-SVN18
+%description -n perl-Git-SVN%{?ius_suffix}
 Perl interface to Git.
 
-%package -n emacs-git18
+%package -n emacs-git%{?ius_suffix}
 Summary:        Git version control system support for Emacs
 Group:          Applications/Editors
 Requires:       git = %{version}-%{release}
@@ -280,10 +287,10 @@ Requires:       emacs(bin) >= %{_emacs_version}
 Requires:       emacs-common
 %endif
 
-%description -n emacs-git18
+%description -n emacs-git%{?ius_suffix}
 %{summary}.
 
-%package -n emacs-git-el18
+%package -n emacs-git-el%{?ius_suffix}
 Summary:        Elisp source files for git version control system support for Emacs
 Group:          Applications/Editors
 %if %{noarch_sub}
@@ -293,7 +300,7 @@ Requires:       emacs-git = %{version}-%{release}
 Provides:       emacs-git-el = %{version}-%{release}                                        
 Conflicts:      emacs-git-el < %{base_ver}
 
-%description -n emacs-git-el18
+%description -n emacs-git-el%{?ius_suffix}
 %{summary}.
 
 %prep
@@ -537,7 +544,7 @@ rm -rf %{buildroot}
 %{!?_without_docs: %{_mandir}/man1/git-citool.1*}
 %{!?_without_docs: %doc Documentation/git-citool.html}
 
-%files -n gitk18
+%files -n gitk%{?ius_suffix}
 %defattr(-,root,root)
 %doc Documentation/*gitk*.txt
 %{_bindir}/*gitk*
@@ -545,23 +552,23 @@ rm -rf %{buildroot}
 %{!?_without_docs: %{_mandir}/man1/*gitk*.1*}
 %{!?_without_docs: %doc Documentation/*gitk*.html }
 
-%files -n perl-Git18 -f perl-git-files
+%files -n perl-Git%{?ius_suffix} -f perl-git-files
 %defattr(-,root,root)
 %exclude %{_mandir}/man3/*Git*SVN*.3pm*
 %{!?_without_docs: %{_mandir}/man3/*Git*.3pm*}
 
-%files -n perl-Git-SVN18 -f perl-git-svn-files
+%files -n perl-Git-SVN%{?ius_suffix} -f perl-git-svn-files
 %defattr(-,root,root)
 %{!?_without_docs: %{_mandir}/man3/*Git*SVN*.3pm*}
 
-%files -n emacs-git18
+%files -n emacs-git%{?ius_suffix}
 %defattr(-,root,root)
 %doc contrib/emacs/README
 %dir %{elispdir}
 %{elispdir}/*.elc
 %{_emacs_sitestartdir}/git-init.el
 
-%files -n emacs-git-el18
+%files -n emacs-git-el%{?ius_suffix}
 %defattr(-,root,root)
 %{elispdir}/*.el
 
@@ -574,7 +581,7 @@ rm -rf %{buildroot}
 %{!?_without_docs: %{_mandir}/man1/*daemon*.1*}
 %{!?_without_docs: %doc Documentation/*daemon*.html}
 
-%files -n gitweb18
+%files -n gitweb%{?ius_suffix}
 %defattr(-,root,root)
 %doc gitweb/INSTALL gitweb/README
 %config(noreplace)%{_sysconfdir}/gitweb.conf
