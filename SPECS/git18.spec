@@ -415,10 +415,6 @@ find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 find %{buildroot} -type f -name perllocal.pod -exec rm -f {} ';'
 
-# Remove remote-helper python libraries and scripts, these are not ready for
-# use yet
-rm -rf %{buildroot}%{python_sitelib} %{buildroot}%{gitcoredir}/git-remote-testgit
-
 # git-archimport is not supported
 find %{buildroot} Documentation -type f -name 'git-archimport*' -exec rm -f {} ';'
 
