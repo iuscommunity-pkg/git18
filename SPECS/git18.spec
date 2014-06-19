@@ -29,13 +29,6 @@
 %global filter_yaml_any     0
 %endif
 
-# Build gnome-keyring git-credential helper on Fedora and RHEL >= 7
-%if 0%{?fedora} || 0%{?rhel} >= 7
-%global gnome_keyring 1
-%else
-%global gnome_keyring 0
-%endif
-
 %if (0%{?fedora} && 0%{?fedora} < 19) || (0%{?rhel} && 0%{?rhel} < 7)
 %global with_desktop_vendor_tag 1
 %else
@@ -78,9 +71,6 @@ BuildRequires:  emacs
 BuildRequires:  expat-devel
 BuildRequires:  gettext
 BuildRequires:  %{libcurl_devel}
-%if %{gnome_keyring}
-BuildRequires:  libgnome-keyring-devel
-%endif
 BuildRequires:  pcre-devel
 BuildRequires:  openssl-devel
 BuildRequires:  zlib-devel >= 1.2
@@ -368,10 +358,6 @@ make %{?_smp_mflags} doc
 
 make -C contrib/emacs
 
-%if %{gnome_keyring}
-make -C contrib/credential/gnome-keyring/
-%endif
-
 make -C contrib/subtree/
 
 # Remove shebang from bash-completion script
@@ -400,13 +386,6 @@ for elc in %{buildroot}%{elispdir}/*.elc ; do
 done
 install -Dpm 644 %{SOURCE2} \
     %{buildroot}%{_emacs_sitestartdir}/git-init.el
-
-%if %{gnome_keyring}
-install -pm 755 contrib/credential/gnome-keyring/git-credential-gnome-keyring \
-    %{buildroot}%{gitcoredir}
-# Remove built binary files, otherwise they will be installed in doc
-make -C contrib/credential/gnome-keyring/ clean
-%endif
 
 make -C contrib/subtree install
 %if ! %{use_prebuilt_docs}
